@@ -16,7 +16,6 @@ public class SudokuAstarHeuristic implements HeuristicFunction {
 	@Override
 	public double h(Object state) {
 		Sudoku sudoku = (Sudoku) state;
-//		sudoku.print();
 		
 		int grille[][] = sudoku.getGrille();	
 

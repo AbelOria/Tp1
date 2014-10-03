@@ -1,27 +1,20 @@
 package aima.gui.applications.search.sudoku;
 
 import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
 
 import aima.core.agent.Action;
 import aima.core.agent.impl.DynamicAction;
 
+/**
+ * 
+ * @author Abel oria
+ * Representation d'une grille de sudoku
+ *
+ */
 public class Sudoku {
-
-	/*
-	public static Action UN = new DynamicAction("1");
-	public static Action DEUX = new DynamicAction("2");
-	public static Action TROIS = new DynamicAction("3");
-	public static Action QUATRE = new DynamicAction("4");
-	public static Action CINQ = new DynamicAction("5");
-	public static Action SIX = new DynamicAction("6");
-	public static Action SEPT = new DynamicAction("7");
-	public static Action HUIT = new DynamicAction("8");
-	public static Action NEUF = new DynamicAction("9");
-	*/
 	
+	/** Tous les actiones possibles pour une grille de sudoku où tous
+	 * les cases son 0s	 */
 	public static HashMap<String, Action> actions = null;
 	
 	private int[][] etat = null;
@@ -36,6 +29,33 @@ public class Sudoku {
 		creerActions();
 	}
 	
+	public int[][] getGrille() {
+		return etat;
+	}
+	
+	public void setCasse(int i, int j, int valeur){
+		etat[i][j] = valeur;
+		
+	}
+	
+	/**
+	 * Affiche sur la console de sortie la matrice du sudoku sous forme d'un 
+	 * grille 9x9
+	 */
+	public void print(){
+		for(int i =0 ; i < 9; i++){
+			for(int j = 0 ; j< 9; j++){
+				
+				System.out.print ( etat[i][j]+" " );
+			}
+			System.out.println();
+		}
+	}
+
+	/**
+	 * Génère tous les actions possibles pour une grille de Sudoku où tous les
+	 * cases sont 0 (9*9*9 actions générés) 
+	 */
 	private void creerActions(){
 		actions = new HashMap<String, Action>();
 		for(int i = 0 ; i < 9 ; i++ ){
@@ -47,40 +67,29 @@ public class Sudoku {
 		}
 	}
 
+	/**
+	 * 
+	 * @param etat Un chîne de caratères contenant 81 chiffres élus entre 0 et 9 
+	 * @return une matrice 9x9 contennant les 81 chiffres reçus dans etat  
+	 */
 	private int[][] createEtat(String etat) {
+	
 		int etat_courrant[][] = new int[9][9];
 		int n = 0;
+		
 		for(int i =0 ; i < 9; i++){
 			for(int j = 0 ; j< 9; j++){
-				etat_courrant[i][j] = Integer.parseInt( (String) etat.subSequence(n,n+1));
+				etat_courrant[i][j] = 
+						Integer.parseInt( (String) etat.subSequence(n,n+1));
 				n++;
 			}
 		}
 		return etat_courrant;
 	}
-	
-	public int[][] getGrille() {
-		return etat;
-	}
-	
-	public void print(){
-		for(int i =0 ; i < 9; i++){
-			for(int j = 0 ; j< 9; j++){
-				
-				System.out.print ( etat[i][j]+" " );
-			}
-			System.out.println();
-		}
-	}
-	
-	public void setCasse(int i, int j, int valeur){
-		etat[i][j] = valeur;
-		
-	}
 
-	
-	
-	//Evaluation	
+	//========================================================
+	//Evaluation de l'instatiation et de l'affichage de l'etat	
+	//========================================================
 	public static void main(String arg[]){
 		new Sudoku(	"200060000007004086000001300"
 				+ 	"000000040090000000480000710"

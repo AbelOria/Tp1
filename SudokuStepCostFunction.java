@@ -7,7 +7,7 @@ public class SudokuStepCostFunction implements StepCostFunction {
 
 	@Override
 	public double c(Object s, Action a, Object sDelta) {
-		// TODO Auto-generated method stub
+
 		return -7;
 	}
 
