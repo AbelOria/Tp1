@@ -1,11 +1,8 @@
 package aima.gui.applications.search.sudoku;
 
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.Set;
 
-import aima.core.agent.Action;
-import aima.core.agent.impl.DynamicAction;
 import aima.core.search.framework.HeuristicFunction;
 
 public class SudokuAstarHeuristic implements HeuristicFunction {

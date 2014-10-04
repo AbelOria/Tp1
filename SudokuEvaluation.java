@@ -5,9 +5,6 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
-import java.util.List;
-
-import aima.core.agent.Action;
 
 /**
  * 
@@ -15,20 +12,72 @@ import aima.core.agent.Action;
  *
  */
 public class SudokuEvaluation {
+	
+	private LinkedList<LinkedList<SudokuApp>> agentsParTypeDeRecherche;
+	
+	public SudokuEvaluation(LinkedList<String> exemplairesSudoku,
+			LinkedList<Integer> typesRecherche){
+		
+			agentsParTypeDeRecherche = new LinkedList<LinkedList<SudokuApp>>();
+			for(int i = 0 ; i< typesRecherche.size(); i++){
+				agentsParTypeDeRecherche.add(new LinkedList<SudokuApp>());
+			}
+			
+			resoudre(exemplairesSudoku, typesRecherche);
+	}
 
+	
+	
+	private void resoudre(LinkedList<String> exemplairesSudoku,
+			LinkedList<Integer> typesRecherche){		
+
+		for(String sudokuString : exemplairesSudoku){
+
+			
+			for(Integer i : typesRecherche){
+				int j =i;
+				SudokuApp sa = new SudokuApp(j, sudokuString);
+				agentsParTypeDeRecherche.get(j).add(sa);
+				System.out.print("j: "+ j + "   " +sa.getNombreTests()+ "       ");
+			}
+			System.out.println( "     ");
+
+			
+			
+		}
+	}
+
+	
+	
+	private void afficherDernierResolu(){
+		for(int i = 0 ; i <agentsParTypeDeRecherche.size() ; i++){
+			
+			int nTest = agentsParTypeDeRecherche.get(i).getLast().getNombreTests();
+			System.out.print( nTest  + "    ");
+			
+		}		
+		
+		System.out.println("");
+	}
+	
+	
+	
 	public static void main(String[] args) {
-		
-		/** Liste d'agents qui utilisent la recherche prodondeur d'abord */
-		LinkedList<SudokuApp> sudokusProfondeurDAbord = 
-				new LinkedList<SudokuApp>();
+				
+		// définition de types de recherche à realiser
+		LinkedList<Integer> typesDeRecherche = new LinkedList<Integer>();
+		typesDeRecherche.add(0);
+		typesDeRecherche.add(1);
+//		typesDeRecherche.add(2);
 
-		/** Liste d'agents qui utilisent la recherche meilleur d'abord */
-		LinkedList<SudokuApp> sudokusFirstBest = new LinkedList<SudokuApp>();
-		
-		
+		// Fichier contenent la liste de sudokus
 		String fichier ="src/main/java/aima/gui/applications/"
 				+ "search/sudoku/liste_de_sudokus";
-		
+
+		LinkedList<String> sudokusAResoudre = new LinkedList<String>();
+
+
+
 		// lecture du fichier texte contenant les jeu de sudoku (il n'y a pas
 		// de vérification de la validité du fichier) et sa resolution par
 		// SudokuApp
@@ -38,18 +87,12 @@ public class SudokuEvaluation {
 			BufferedReader br=new BufferedReader(ipsr);
 
 			String ligne;
-			int sudokusResolus =1;
+			int nSudokusAResoudre = 100;
+			int nSudokusLues = 0;
 			
-			while ((ligne=br.readLine())!=null){
-				
-				sudokusProfondeurDAbord.add(new SudokuApp(0,ligne));
-				sudokusFirstBest.add(new SudokuApp(1,ligne));
-				
-				System.out.print(sudokusResolus +" ");			
-				if(sudokusResolus % 10 == 0){
-					System.out.println("");
-				}
-				sudokusResolus++;
+			while ((ligne=br.readLine())!=null && nSudokusLues < nSudokusAResoudre){				
+				sudokusAResoudre.add(ligne);
+				nSudokusLues++;
 			}
 			br.close(); 
 		}		
@@ -57,34 +100,6 @@ public class SudokuEvaluation {
 			System.out.println(e.toString());
 		}
 		
-
-		System.out.println("Nombre de Jeu	Profondeur d'abord 		    Meilleur d'bord");
-		int npd = 0;
-		int nmd = 0;
-		int egaux = 0;
-
-		//Affichage du nombre de noeuds développés pour chaque algorithme
-		//de recherche
-		for(int i = 0; i < sudokusProfondeurDAbord.size() ; i++ ){
-			SudokuApp pd =   sudokusProfondeurDAbord.get(i);
-			SudokuApp md =   sudokusFirstBest.get(i);
-			
-			System.out.println(i+1 + "           " + pd.getNombreTests() + "                "+ md.getNombreTests());
-			
-			if(pd.getNombreTests() > md.getNombreTests()){
-				npd++;
-			}
-			else if(pd.getNombreTests() < md.getNombreTests()){
-				nmd++;
-			}
-			else{
-				egaux++;
-			}
-		}
-		
-		//Affichage de comparations de performance des algorithmes
-		System.out.println("profondeur d'abord: " + npd +"\n"
-				+ "meilleur d'bord: "+ nmd+"\n"
-				+ "egaux: " + egaux);
+		new SudokuEvaluation(sudokusAResoudre, typesDeRecherche);
 	}	
 }
