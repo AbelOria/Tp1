@@ -8,7 +8,7 @@ public class SudokuStepCostFunction implements StepCostFunction {
 	@Override
 	public double c(Object s, Action a, Object sDelta) {
 
-		return 1;
+		return -7;
 	}
 
 }

@@ -4,19 +4,13 @@ import aima.core.search.framework.GoalTest;
 
 public class SudokuGoalTest implements GoalTest {
 
-	/**
-	 * Compte le nombre d'descendants qui sont évalués à partir d'une état  
-	 * initial jusqu'à l'état but (ou echec) du sudoku 
-	 */
-	private int nombreTests = 0;
-
 	
 	/**
 	 * @param state Un état  du sudoku à vérifier s'il est l'état but
 	 * @return true si state est un état but sinon false
 	 */
 	public boolean isGoalState(Object state) {
-		nombreTests++;
+
 		boolean goal = true;
 
 		Sudoku sudoku = (Sudoku) state;
@@ -57,18 +51,7 @@ public class SudokuGoalTest implements GoalTest {
 				}
 			}
 		}
-//		System.out.println("isGoal?: " + goal + "   nombreTest: "+ nombreTests);
 		return goal;
-	}
-	
-	
-	/**
-	 * 
-	 * @return Le nombre de test réalisés pour résoudre un jeu de sudoku
-	 * (succes ou échec) 
-	 */
-	public int getNombreTests(){
-		return nombreTests;
 	}
 
 	

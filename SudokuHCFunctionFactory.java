@@ -29,7 +29,6 @@ public class SudokuHCFunctionFactory {
 	}
 	
 	
-	
 	public static void main(String arg[]){
 		ActionsFunction af = SudokuHCFunctionFactory.getActionsFunction();
 		af.actions(new Sudoku("123456789123456789123456789123456789123456789123456789123456789123456789123456789"));
@@ -213,6 +212,7 @@ public class SudokuHCFunctionFactory {
 	 */
 	private static class SudokuResultFunction implements ResultFunction {
 
+		private static int noeudsCrees;
 		/**
 		 * @param s Une instance de sudoku
 		 * @param a Une action à applique a "s" 
@@ -252,11 +252,12 @@ public class SudokuHCFunctionFactory {
 					newSudoku.setCasse(action[0], action[1], valeurCase2);
 					newSudoku.setCasse(action[2], action[3], valeurCase1);
 //					System.out.println("enfant cree");
+					noeudsCrees++;
 					return newSudoku;
 				}
 			}
 //			System.out.println("enfant on cree");
 			return s;
-		}
+		}		
 	}
 }
