@@ -2,6 +2,7 @@ package aima.gui.applications.search.sudoku;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 
 import aima.core.agent.Action;
 import aima.core.agent.impl.DynamicAction;
@@ -13,37 +14,37 @@ import aima.core.agent.impl.DynamicAction;
  *
  */
 public class Sudoku {
-	
+
 	/** Tous les actiones possibles pour une grille de sudoku où tous
 	 * les cases son 0s	 */
 	public static HashMap<String, Action> actions ;
-	
+
 	/** Tous les actiones de interchangement de cases */
 	public static HashMap<Action, int[]> actionsHillClimbing ;
-		
-	
+
+
 	private int[][] etat = null;
-	
+
 	public Sudoku(String etat){
 		this.etat = createEtat(etat);
 		creerActions();
 		creerActionsHillClimbing();
 	}
-	
+
 	public Sudoku(int[][] etat){
 		this.etat = etat;
 		creerActions();
 		creerActionsHillClimbing();
 	}
-	
+
 	public int[][] getGrille() {
 		return etat;
 	}
-	
+
 	public void setCasse(int i, int j, int valeur){
 		etat[i][j] = valeur;
 	}
-	
+
 	/**
 	 * Affiche sur la console de sortie la matrice du sudoku sous forme d'un 
 	 * grille 9x9
@@ -51,7 +52,7 @@ public class Sudoku {
 	public void print(){
 		for(int i =0 ; i < 9; i++){
 			for(int j = 0 ; j< 9; j++){
-				
+
 				System.out.print ( etat[i][j]+" " );
 			}
 			System.out.println();
@@ -72,8 +73,8 @@ public class Sudoku {
 			}
 		}
 	}
-	
-	
+
+
 	/**
 	 * Génère tous les actions possibles pour une grille de Sudoku qui utilisé
 	 * l'acciont d'interchanger les cases de la grille
@@ -93,8 +94,8 @@ public class Sudoku {
 			}
 		}
 	}
-	
-	
+
+
 	/**
 	 * Remplisage aleatoire des cases 0 d'une grille sudoku (etat),
 	 * utilisé pour génèrer un état initial pour la recherche
@@ -109,7 +110,7 @@ public class Sudoku {
 				nombresARemplir.add(j+1);
 			}
 		}
-		
+
 		//Elimination de nombres qui se trouven dans la grille
 		for(int i = 0 ; i < 9 ; i++){
 			for(int j = 0 ; j < 9 ; j++){
@@ -130,7 +131,7 @@ public class Sudoku {
 			}
 		}	
 	}
-	
+
 
 	/**
 	 * 
@@ -138,10 +139,10 @@ public class Sudoku {
 	 * @return une matrice 9x9 contennant les 81 chiffres reçus dans etat  
 	 */
 	private int[][] createEtat(String etat) {
-	
+
 		int etat_courrant[][] = new int[9][9];
 		int n = 0;
-		
+
 		for(int i =0 ; i < 9; i++){
 			for(int j = 0 ; j< 9; j++){
 				etat_courrant[i][j] = 
@@ -150,6 +151,50 @@ public class Sudoku {
 			}
 		}
 		return etat_courrant;
+	}
+
+	/**
+	 * 
+	 * @param actions
+	 * @param typeAction 0 pour PDA, 1 pour MDA, 2 pour Hill Climbing 
+	 */
+	public void remplirSolution(List<Action> actions , int typeAction) {
+		if(typeAction == 0 || typeAction == 1){
+			remplirSolutionPDA_MDA(actions);
+		}
+		else if(typeAction == 2 ){
+			remplirSolutionHC(actions);
+		}		
+	}
+
+	private void remplirSolutionPDA_MDA(List<Action> actions) {
+		for(Action action: actions){
+			for(int i = 0 ; i < 9 ; i++ ){
+				for(int j = 0 ; j < 9 ; j++ ){
+					for(int k = 1 ; k <= 9 ; k++){
+						Action actionCourrent= new DynamicAction(i+""+j+""+k);
+						if(actionCourrent.equals(action)){
+							etat[i][j]  = k;
+						}
+					}
+				}
+			}		
+		}		
+	}
+
+	private void remplirSolutionHC(List<Action> actions) {
+		for(Action action :actions){
+			if(!action.toString().endsWith("Action[name==NoOp]")){
+				int i1 = Integer.parseInt(action.toString().substring(13, 14));
+				int j1 = Integer.parseInt(action.toString().substring(14, 15));
+				int i2 = Integer.parseInt(action.toString().substring(16, 17));
+				int j2 = Integer.parseInt(action.toString().substring(17, 18));
+
+				int temp = etat[i1][j1];
+				etat[i1][j1] = etat[i2][j2];
+				etat[i2][j2] = temp;
+			}
+		}
 	}
 
 	//========================================================

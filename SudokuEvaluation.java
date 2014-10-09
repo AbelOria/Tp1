@@ -64,8 +64,8 @@ public class SudokuEvaluation {
 			
 			for(Integer i : typesRecherche){
 				int j =i;
-				SudokuApp sa = new SudokuApp(j, sudokuString, rechercheMaximum);
-				agentsParTypeDeRecherche.get(j).add(sa);
+				SudokuApp sudokuApp = new SudokuApp(j, sudokuString, rechercheMaximum);
+				agentsParTypeDeRecherche.get(j).add(sudokuApp);
 			}		
 			afficherDernierResolu();
 		}
@@ -226,8 +226,8 @@ public class SudokuEvaluation {
 				+ "search/sudoku/liste_de_sudokus";
 
 		LinkedList<String> sudokusAResoudre = new LinkedList<String>();
-
-
+		
+	
 
 		// lecture du fichier texte contenant les jeu de sudoku (il n'y a pas
 		// de vérification de la validité du fichier) et sa resolution par
@@ -238,7 +238,7 @@ public class SudokuEvaluation {
 			BufferedReader br=new BufferedReader(ipsr);
 
 			String ligne;
-			int nSudokusAResoudre = 100;
+			int nSudokusAResoudre = 10;
 			int nSudokusLues = 0;
 			
 			while ((ligne=br.readLine())!=null && nSudokusLues < nSudokusAResoudre){				
@@ -256,4 +256,8 @@ public class SudokuEvaluation {
 		new SudokuEvaluation(sudokusAResoudre, typesDeRecherche, 5000);
 		new SudokuEvaluation(sudokusAResoudre, typesDeRecherche, 10000);
 	}	
+	
+	//TODO: Limiter le numéro de recherche en utilisant la clase SudokuGraphSearch.java
+	//TODO: Analyse des résultat de l'a résolution de 100 sudokus avec différentes limites de recherche
+	//TODO: Definir les états pour l'espace d'état de Hill Climbing
 }

@@ -28,53 +28,33 @@ public class SudokuApp{
 	/** List of supported search algorithms. */
 	protected static List<Search> SEARCH_ALGOS = new ArrayList<Search>();
 
-	/** Adds a new item to the list of supported search algorithms. */
-	public static void addSearchAlgorithm(String name, Search algo) {
-		SEARCH_NAMES.add(name);
-		SEARCH_ALGOS.add(algo);
-	}
-	
-	private Sudoku sudoku;
-	protected Problem problem;
-
-	protected SearchAgent agent;
-
 	/** Liste d'actions menant à la solution du problème donné */
 	private List<Action> actions;
 
+	private Sudoku sudoku;
+	protected Problem problem;
+	protected SearchAgent agent;
 	private int typeRecherche;
-	private static GraphSearch gs1 = new GraphSearch();
-	private static GraphSearch gs2 = new GraphSearch();
 
+		private static GraphSearch gs1 = new GraphSearch();
+		private static GraphSearch gs2 = new GraphSearch();
+//	private static SudokuGraphSearch gs1;
+//	private static SudokuGraphSearch gs2;	
 	private static HillClimbingSearch hc = new HillClimbingSearch( new SudokuHillClimbingHeuristic());
-	
-	
-	private static void setAlgorithmeRecherche(int maximumNoeudesARechercher) {
 
-		gs1.setRechecheMaximum(maximumNoeudesARechercher);
-		
-		gs2.setRechecheMaximum(maximumNoeudesARechercher);
-		
-		hc.setRechercheMaximum(maximumNoeudesARechercher);
-		
-		addSearchAlgorithm(" Depth First Search (Graph Search)",
-				new DepthFirstSearch(gs1));
-		
-		addSearchAlgorithm("A star Search",
-				new AStarSearch(gs2, new SudokuAstarHeuristic()));
-		
-//		addSearchAlgorithm("Hill Climbing Search",
-//				new HillClimbingSearch( new SudokuHillClimbingHeuristic()));
-		addSearchAlgorithm("Hill Climbing Search", 	hc);
-	}
-	
-	
+	private  SudokuHCFunctionFactory sudokuHCFunctionFactory;
+
 	public SudokuApp(int kindSearch, String etatInitial, 
 			int maximumNoeudesARechercher){
-		
+
+//		hc = new HillClimbingSearch( new SudokuHillClimbingHeuristic());
+		hc.setRechercheMaximum(maximumNoeudesARechercher);
+//		gs1 = new SudokuGraphSearch(maximumNoeudesARechercher);
+//		gs2 = new SudokuGraphSearch(maximumNoeudesARechercher);
+
 		typeRecherche = kindSearch;
 		setAlgorithmeRecherche(maximumNoeudesARechercher); 
-		
+
 		sudoku = new Sudoku(etatInitial);
 		if(kindSearch == 2){
 			sudoku.remplirAleatoirementHillClimbing();
@@ -86,12 +66,33 @@ public class SudokuApp{
 		agent = createAgent(kindSearch);
 		actions  = agent.getActions();		
 	}	
-	
+
+
+	private static void setAlgorithmeRecherche(int maximumNoeudesARechercher) {
+
+		gs1.setRechecheMaximum(maximumNoeudesARechercher);
+		gs2.setRechecheMaximum(maximumNoeudesARechercher);
+		hc.setRechercheMaximum(maximumNoeudesARechercher);
+
+		addSearchAlgorithm(" Depth First Search (Graph Search)",
+				new DepthFirstSearch(gs1));
+
+		addSearchAlgorithm("A star Search",
+				new AStarSearch(gs2, new SudokuAstarHeuristic()));
+
+		addSearchAlgorithm("Hill Climbing Search", 	hc);
+	}
+
+	/** Adds a new item to the list of supported search algorithms. */
+	public static void addSearchAlgorithm(String name, Search algo) {
+		SEARCH_NAMES.add(name);
+		SEARCH_ALGOS.add(algo);
+	}
+
 	public List<Action> getActions(){		
 		return actions;
 	}
-	
-	
+
 	public int getNombreTests(){
 
 		if(typeRecherche == 0){
@@ -105,14 +106,22 @@ public class SudokuApp{
 		}
 		return 0;
 	}
-	
+
 	public boolean isSucces(){
 		if(typeRecherche == 2){
 			return !hc.getOutcome().toString().equals("FAILURE");
 		}
 		return actions.size() > 0 ;
 	}
-		
+
+	public void remplirSolution(){
+		sudoku.remplirSolution(actions, typeRecherche );
+	}
+
+	public void printSudoku(){
+		sudoku.print();
+	}
+
 
 	/**
 	 * 
@@ -123,14 +132,14 @@ public class SudokuApp{
 	 */
 	private SearchAgent createAgent(int searchType){
 		SearchAgent agent = null;
-		
-		 try {
+
+		try {
 			agent = new SearchAgent(problem, SEARCH_ALGOS.get(searchType));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
-		 
-		 return agent;
+
+		return agent;
 	}
 
 	/**
@@ -142,17 +151,60 @@ public class SudokuApp{
 	private Problem createProblem(Sudoku sudoku){
 
 		Problem problem = new Problem(sudoku,
-					SudokuFunctionFactory.getActionsFunction(),
-					SudokuFunctionFactory.getResultFunction(),
-					new SudokuGoalTest(),
-					new SudokuStepCostFunction());
+				SudokuFunctionFactory.getActionsFunction(),
+				SudokuFunctionFactory.getResultFunction(),
+				new SudokuGoalTest(),
+				new SudokuStepCostFunction());
 		return problem;
 	}
-	
 
-	private  SudokuHCFunctionFactory sudokuHCFunctionFactory;
-	
-	
+
+
+	private void printActions() {
+		// Print MDA et PDA
+
+		System.out.println("Liste des actions: ");
+
+		if(typeRecherche == 0 || typeRecherche== 1){
+			int nAction = 1;
+			for(Action action: actions){
+				for(int i = 0 ; i < 9 ; i++ ){
+					for(int j = 0 ; j < 9 ; j++ ){
+						for(int k = 1 ; k <= 9 ; k++){
+							Action actionCourrent= new DynamicAction(i+""+j+""+k);
+							if(actionCourrent.equals(action)){
+								System.out.printf("%3d) %s \n",
+										nAction,
+										"case: (" + i + "," + j + ")   " 
+												+"remplir: " + k );
+								nAction++;
+							}
+						}
+					}
+				}
+
+			}
+		}
+		//Print  Hill Climbing
+		else if(typeRecherche == 2){
+			int nAction = 1;
+			for(Action action :actions){
+				if(!action.toString().endsWith("Action[name==NoOp]")){
+					//System.out.println(action.toString());				
+					int i1 = Integer.parseInt(action.toString().substring(13, 14));
+					int j1 = Integer.parseInt(action.toString().substring(14, 15));
+					int i2 = Integer.parseInt(action.toString().substring(16, 17));
+					int j2 = Integer.parseInt(action.toString().substring(17, 18));
+
+					System.out.printf("%3d) %s\n",
+							nAction,
+							"Interchanger: ("+i1+","+j1+") avec ("+i2+","+j2+")");
+					nAction++;
+				}
+			}
+		}
+	}
+
 
 	private  Problem createProblemHillClimbing(Sudoku sudoku){
 
@@ -161,65 +213,48 @@ public class SudokuApp{
 				sudokuHCFunctionFactory.getResultFunction(),
 				new SudokuGoalTest(),
 				new SudokuStepCostFunction());
-		
+
 		return problem;		
 	}
-	
+
 	//========================================================
 	//Evaluation SudokuApp	
 	//========================================================
 	public static void main(String[] args) {
-	
-	
-	SudokuApp sudokuApp = new SudokuApp(2,	
-				"800006304000000000040090001"
-			+ 	"309060000000700006021800050"
-			+ 	"002470000400008700000001040", 10000);
-		
 
-//		SudokuApp sudokuApp = new SudokuApp(2,	
-//					"002519436596342871314867290"
-//				+	"001738649937654128648921750"
-//				+	"000483967873296510469175380");
 
-	
-//		SudokuApp sudokuApp = new SudokuApp(0,	
-//					"782519436596342871314867295"
-//				+	"251738649937654128648921753"
-//				+	"125483967873296514469175382");
+		String sudoku1 = "800006304000000000040090001"
+				+ 	"309060000000700006021800050"
+				+ 	"002470000400008700000001040";
 
-	
-//		SudokuApp sudokuApp = new SudokuApp(0,	
-//					"000009430000000000314867000"
-//				+	"000008640000000000048901703"
-//				+	"025483960000090514469175302");
+		String sudoku2 = "002519436596342871314867290"
+				+	"001738649937654128648921750"
+				+	"000483967873296510469175380";
 
-		
+		String sudoku3 = "782519436596342871314867295"
+				+	"251738649937654128648921753"
+				+	"125483967873296514469175382";
+
+		String sudoku4 = "000009430000000000314867000"
+				+	"000008640000000000048901703"
+				+	"025483960000090514469175302";
+
+		SudokuApp sudokuApp = new SudokuApp(0,sudoku2 , 500);
+
 		List<Action> actions = sudokuApp.getActions();
-		
-		System.out.println("nombre de tests: " + sudokuApp.getNombreTests());				
-		System.out.println("nombre d'actions trouves: " + actions.size());
-		
-		//Affichage des actions qui menent à l'état but 
-		for(Action action: actions){
-			for(int i = 0 ; i < 9 ; i++ ){
-				for(int j = 0 ; j < 9 ; j++ ){
-					for(int k = 1 ; k <= 9 ; k++){
-						Action actionCourrent= new DynamicAction(i+""+j+""+k);
-						if(actionCourrent.equals(action)){
-							System.out.print(k);						}
-					}
-				}
-			}
-		
-		}
-		
-		
-		//HC
-		for(Action action :actions){
-			System.out.println(action.toString());
-		}
-		
-		System.out.println("isSucces: " +sudokuApp.isSucces());
+
+		System.out.printf("%s %5d \n", 
+				"Nombre de tests:          ", sudokuApp.getNombreTests());				
+		System.out.printf("%s %5d \n", 
+				"Nombre d'actions trouves: ", actions.size());
+
+
+		sudokuApp.printActions();
+		System.out.println("\nProblème original");		
+		sudokuApp.printSudoku();
+		sudokuApp.remplirSolution();
+		System.out.println("\nProblème résolu");
+		sudokuApp.printSudoku();
+		System.out.println("\nIs success?: " +sudokuApp.isSucces());
 	}
 }
