@@ -1,11 +1,14 @@
 package aima.gui.applications.search.sudoku;
 
 import aima.core.search.framework.GoalTest;
-
+/*
+ * @author Abel Oria, Zakaria Soliman
+ */
 public class SudokuGoalTest implements GoalTest {
 
 	
 	/**
+	 * 
 	 * @param state Un état  du sudoku à vérifier s'il est l'état but
 	 * @return true si state est un état but sinon false
 	 */

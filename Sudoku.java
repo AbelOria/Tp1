@@ -9,7 +9,7 @@ import aima.core.agent.impl.DynamicAction;
 
 /**
  * 
- * @author Abel oria
+ * @author Abel oria, Zakaria Soliman
  * Representation d'une grille de sudoku
  *
  */

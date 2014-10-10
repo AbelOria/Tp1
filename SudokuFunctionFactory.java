@@ -8,7 +8,7 @@ import aima.core.search.framework.ResultFunction;
 
 /**
  * 
- * @author Abel Oria (Modification de HeighPuzzleFunctionFactory)
+ * @author Abel Oria, Zakaria Soliman (Modification de HeighPuzzleFunctionFactory)
  * Gère la création des class SudokuActionsFunction et SudokuResultFunction 
  *
  */

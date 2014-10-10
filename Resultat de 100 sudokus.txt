@@ -1,0 +1,446 @@
+RESOLUTION DE SUDOKUS 
+============================================================
+Limite de recherche:  500
+ nJeu               Profondeur d'abord               Meilleur d'abord                   HillClimbing 
+    1                      172  true                      154  true                      792 false
+    2                       97  true                       80  true                     1383 false
+    3                      365  true                      104  true                        3 false
+    4                       68  true                       83  true                      603 false
+    5                       88  true                       81  true                      508 false
+    6                       84  true                       89  true                        2 false
+    7                      103  true                      500 false                      813 false
+    8                       57  true                       71  true                      564 false
+    9                      208  true                      476  true                      504 false
+   10                      214  true                      500 false                      652 false
+   11                       59  true                       74  true                      834 false
+   12                      500 false                      165  true                      566 false
+   13                      195  true                      140  true                      723 false
+   14                      112  true                      500 false                      589 false
+   15                      500 false                      500 false                      722 false
+   16                      154  true                      165  true                      638 false
+   17                       93  true                       61  true                      593 false
+   18                      227  true                      230  true                      505 false
+   19                      500 false                      500 false                      604 false
+   20                      500 false                      500 false                      544 false
+   21                       78  true                       90  true                      670 false
+   22                       82  true                      140  true                      644 false
+   23                      224  true                      312  true                      577 false
+   24                      230  true                      500 false                      514 false
+   25                       70  true                      169  true                      699 false
+   26                      500 false                      432  true                      535 false
+   27                      261  true                      115  true                      590 false
+   28                       71  true                      125  true                      689 false
+   29                      133  true                      500 false                      557 false
+   30                       80  true                       94  true                      532 false
+   31                      141  true                      488  true                      531 false
+   32                      429  true                      134  true                      101 false
+   33                      455  true                      171  true                      529 false
+   34                      241  true                      259  true                      593 false
+   35                      405  true                      167  true                      726 false
+   36                       80  true                      163  true                      505 false
+   37                      216  true                      182  true                      583 false
+   38                      317  true                      500 false                       40 false
+   39                      374  true                      325  true                      501 false
+   40                      140  true                       82  true                      508 false
+   41                      126  true                      121  true                        5 false
+   42                      500 false                      500 false                      533 false
+   43                      500 false                      500 false                      500 false
+   44                      324  true                      150  true                      610 false
+   45                      112  true                      242  true                      222 false
+   46                      379  true                      205  true                      362 false
+   47                      483  true                      496  true                      547 false
+   48                      500 false                      182  true                       36 false
+   49                      102  true                      150  true                        2 false
+   50                       95  true                      305  true                      589 false
+   51                      500 false                      500 false                      748 false
+   52                       76  true                       88  true                        1 false
+   53                      375  true                      466  true                        8 false
+   54                       79  true                       83  true                        2 false
+   55                      500 false                      500 false                      548 false
+   56                       69  true                       84  true                      593 false
+   57                       57  true                      303  true                      539 false
+   58                      500 false                      330  true                        1 false
+   59                      325  true                      500 false                      606 false
+   60                      500 false                      500 false                      695 false
+   61                      204  true                      145  true                      600 false
+   62                      500 false                       58  true                        2 false
+   63                       68  true                      351  true                      531 false
+   64                      132  true                      106  true                      610 false
+   65                      277  true                      500 false                      617 false
+   66                       85  true                      108  true                      530 false
+   67                      243  true                       73  true                      615 false
+   68                       99  true                      110  true                      702 false
+   69                       55  true                      268  true                      569 false
+   70                       73  true                       73  true                      689 false
+   71                      145  true                      500 false                      618 false
+   72                      270  true                      500 false                      559 false
+   73                      170  true                      284  true                      549 false
+   74                       65  true                      105  true                      518 false
+   75                      379  true                      217  true                      667 false
+   76                       85  true                      500 false                      565 false
+   77                      330  true                      116  true                      572 false
+   78                      150  true                       90  true                      546 false
+   79                      428  true                       73  true                      645 false
+   80                      500 false                      500 false                      762 false
+   81                      500 false                      500 false                        1 false
+   82                      458  true                      500 false                        1 false
+   83                       57  true                       60  true                      538 false
+   84                      217  true                      383  true                      721 false
+   85                       86  true                       73  true                      691 false
+   86                      500 false                      500 false                      754 false
+   87                       92  true                       72  true                      566 false
+   88                      153  true                       60  true                      535 false
+   89                      127  true                       65  true                      744 false
+   90                       79  true                      500 false                      574 false
+   91                      213  true                      161  true                      626 false
+   92                      500 false                      261  true                      573 false
+   93                       91  true                      393  true                     1274 false
+   94                      162  true                      131  true                      720 false
+   95                      359  true                      409  true                      512 false
+   96                      500 false                      500 false                      501 false
+   97                       84  true                      175  true                      527 false
+   98                      166  true                      171  true                      511 false
+   99                       59  true                      136  true                      525 false
+  100                      500 false                      166  true                      534 false
+Taux de succes            0.81                           0.75                           0.00
+ 
+Comparaison de meilleur solution:
+   Profondeur d'abord: 51 fois le meilleur
+   Meilleur d'bord:    36 fois le meilleur
+   Hill Climbing:      0 fois le meilleur
+
+
+RESOLUTION DE SUDOKUS 
+============================================================
+Limite de recherche:  1000
+ nJeu               Profondeur d'abord               Meilleur d'abord                   HillClimbing 
+    1                      172  true                      154  true                       74 false
+    2                       97  true                       80  true                     1164 false
+    3                      365  true                      104  true                     1045 false
+    4                       68  true                       83  true                     1218 false
+    5                       88  true                       81  true                     1041 false
+    6                       84  true                       89  true                     1236 false
+    7                      103  true                      951  true                        3 false
+    8                       57  true                       71  true                      739 false
+    9                      208  true                      476  true                     1295 false
+   10                      214  true                     1000 false                     1230 false
+   11                       59  true                       74  true                     1364 false
+   12                      937  true                      165  true                     1348 false
+   13                      195  true                      140  true                     1138 false
+   14                      112  true                      637  true                        1 false
+   15                     1000 false                     1000 false                     1550 false
+   16                      154  true                      165  true                     1069 false
+   17                       93  true                       61  true                     1092 false
+   18                      227  true                      230  true                     1071 false
+   19                      574  true                      706  true                        2 false
+   20                      810  true                      644  true                     1040 false
+   21                       78  true                       90  true                     1490 false
+   22                       82  true                      140  true                     1547 false
+   23                      224  true                      312  true                        1 false
+   24                      230  true                      565  true                     1254 false
+   25                       70  true                      169  true                     1041 false
+   26                      684  true                      432  true                       14 false
+   27                      261  true                      115  true                     1023 false
+   28                       71  true                      125  true                     1024 false
+   29                      133  true                      538  true                     1326 false
+   30                       80  true                       94  true                        2 false
+   31                      141  true                      488  true                      892 false
+   32                      429  true                      134  true                     1286 false
+   33                      455  true                      171  true                     1139 false
+   34                      241  true                      259  true                        1 false
+   35                      405  true                      167  true                     1080 false
+   36                       80  true                      163  true                     1863 false
+   37                      216  true                      182  true                     1180 false
+   38                      317  true                     1000 false                     1632 false
+   39                      374  true                      325  true                     1229 false
+   40                      140  true                       82  true                     1587 false
+   41                      126  true                      121  true                     1085 false
+   42                     1000 false                      635  true                     1235 false
+   43                     1000 false                      931  true                     1056 false
+   44                      324  true                      150  true                       12 false
+   45                      112  true                      242  true                     1109 false
+   46                      379  true                      205  true                     1106 false
+   47                      483  true                      496  true                        1 false
+   48                      627  true                      182  true                     1057 false
+   49                      102  true                      150  true                     1032 false
+   50                       95  true                      305  true                     1474 false
+   51                     1000 false                     1000 false                      115 false
+   52                       76  true                       88  true                     1268 false
+   53                      375  true                      466  true                     1372 false
+   54                       79  true                       83  true                     1060 false
+   55                     1000 false                     1000 false                     1580 false
+   56                       69  true                       84  true                     1142 false
+   57                       57  true                      303  true                     1835 false
+   58                      577  true                      330  true                     1548 false
+   59                      325  true                      945  true                     1284 false
+   60                     1000 false                     1000 false                      868 false
+   61                      204  true                      145  true                     1627 false
+   62                      880  true                       58  true                     1069 false
+   63                       68  true                      351  true                     1033 false
+   64                      132  true                      106  true                     1073 false
+   65                      277  true                     1000 false                     1467 false
+   66                       85  true                      108  true                     1037 false
+   67                      243  true                       73  true                     1092 false
+   68                       99  true                      110  true                     1261 false
+   69                       55  true                      268  true                     1200 false
+   70                       73  true                       73  true                     1008 false
+   71                      145  true                      599  true                     1644 false
+   72                      270  true                      608  true                     1074 false
+   73                      170  true                      284  true                        3 false
+   74                       65  true                      105  true                     1126 false
+   75                      379  true                      217  true                     1024 false
+   76                       85  true                     1000 false                     1205 false
+   77                      330  true                      116  true                     1624 false
+   78                      150  true                       90  true                     1028 false
+   79                      428  true                       73  true                     1364 false
+   80                     1000 false                     1000 false                        2 false
+   81                      805  true                     1000 false                     1377 false
+   82                      458  true                      612  true                     1027 false
+   83                       57  true                       60  true                     1490 false
+   84                      217  true                      383  true                     1140 false
+   85                       86  true                       73  true                     1159 false
+   86                     1000 false                      583  true                     1161 false
+   87                       92  true                       72  true                     1008 false
+   88                      153  true                       60  true                     1122 false
+   89                      127  true                       65  true                     1023 false
+   90                       79  true                     1000 false                     1002 false
+   91                      213  true                      161  true                     1321 false
+   92                     1000 false                      261  true                     1538 false
+   93                       91  true                      393  true                      903 false
+   94                      162  true                      131  true                     1349 false
+   95                      359  true                      409  true                     1101 false
+   96                     1000 false                     1000 false                     1271 false
+   97                       84  true                      175  true                        1 false
+   98                      166  true                      171  true                     1053 false
+   99                       59  true                      136  true                     1079 false
+  100                      722  true                      166  true                     1164 false
+Taux de succes            0.90                           0.88                           0.00
+ 
+Comparaison de meilleur solution:
+   Profondeur d'abord: 53 fois le meilleur
+   Meilleur d'bord:    40 fois le meilleur
+   Hill Climbing:      0 fois le meilleur
+
+
+RESOLUTION DE SUDOKUS 
+============================================================
+Limite de recherche:  5000
+ nJeu               Profondeur d'abord               Meilleur d'abord                   HillClimbing 
+    1                      172  true                      154  true                     5617 false
+    2                       97  true                       80  true                     3174 false
+    3                      365  true                      104  true                     4630 false
+    4                       68  true                       83  true                     4497 false
+    5                       88  true                       81  true                     1347 false
+    6                       84  true                       89  true                     5557 false
+    7                      103  true                      951  true                     1470 false
+    8                       57  true                       71  true                     5227 false
+    9                      208  true                      476  true                     6345 false
+   10                      214  true                     1876  true                     6179 false
+   11                       59  true                       74  true                     6527 false
+   12                      937  true                      165  true                     1643 false
+   13                      195  true                      140  true                     5575 false
+   14                      112  true                      637  true                     4985 false
+   15                     5000 false                     1067  true                        2 false
+   16                      154  true                      165  true                        1 false
+   17                       93  true                       61  true                        1 false
+   18                      227  true                      230  true                     2525 false
+   19                      574  true                      706  true                     6619 false
+   20                      810  true                      644  true                     3443 false
+   21                       78  true                       90  true                        9 false
+   22                       82  true                      140  true                     3991 false
+   23                      224  true                      312  true                     1223 false
+   24                      230  true                      565  true                     3245 false
+   25                       70  true                      169  true                     5896 false
+   26                      684  true                      432  true                     5517 false
+   27                      261  true                      115  true                     4930 false
+   28                       71  true                      125  true                     3245 false
+   29                      133  true                      538  true                        5 false
+   30                       80  true                       94  true                     5631 false
+   31                      141  true                      488  true                     2012 false
+   32                      429  true                      134  true                     5275 false
+   33                      455  true                      171  true                     6060 false
+   34                      241  true                      259  true                     3034 false
+   35                      405  true                      167  true                     6062 false
+   36                       80  true                      163  true                     4920 false
+   37                      216  true                      182  true                     5555 false
+   38                      317  true                     1485  true                     3506 false
+   39                      374  true                      325  true                     5017 false
+   40                      140  true                       82  true                     5406 false
+   41                      126  true                      121  true                        2 false
+   42                     2537  true                      635  true                     3476 false
+   43                     1030  true                      931  true                     5081 false
+   44                      324  true                      150  true                     5237 false
+   45                      112  true                      242  true                     5267 false
+   46                      379  true                      205  true                     4545 false
+   47                      483  true                      496  true                     5887 false
+   48                      627  true                      182  true                     4220 false
+   49                      102  true                      150  true                     5013 false
+   50                       95  true                      305  true                     4099 false
+   51                     5000 false                     5000 false                     2406 false
+   52                       76  true                       88  true                     5595 false
+   53                      375  true                      466  true                     5417 false
+   54                       79  true                       83  true                     4454 false
+   55                     1333  true                     1068  true                        3 false
+   56                       69  true                       84  true                        5 false
+   57                       57  true                      303  true                     5563 false
+   58                      577  true                      330  true                     3622 false
+   59                      325  true                      945  true                     4907 false
+   60                     2488  true                     1861  true                     3461 false
+   61                      204  true                      145  true                        2 false
+   62                      880  true                       58  true                     4171 false
+   63                       68  true                      351  true                     3257 false
+   64                      132  true                      106  true                     6115 false
+   65                      277  true                     1040  true                     5184 false
+   66                       85  true                      108  true                     2967 false
+   67                      243  true                       73  true                     3650 false
+   68                       99  true                      110  true                     6200 false
+   69                       55  true                      268  true                     5229 false
+   70                       73  true                       73  true                     5123 false
+   71                      145  true                      599  true                     3071 false
+   72                      270  true                      608  true                     3609 false
+   73                      170  true                      284  true                     5537 false
+   74                       65  true                      105  true                     2462 false
+   75                      379  true                      217  true                     2278 false
+   76                       85  true                     1663  true                     2443 false
+   77                      330  true                      116  true                     6056 false
+   78                      150  true                       90  true                     5270 false
+   79                      428  true                       73  true                     5044 false
+   80                     1127  true                     2236  true                     5031 false
+   81                      805  true                     4995  true                     2916 false
+   82                      458  true                      612  true                     5736 false
+   83                       57  true                       60  true                        3 false
+   84                      217  true                      383  true                     5907 false
+   85                       86  true                       73  true                     4214 false
+   86                     1149  true                      583  true                     3087 false
+   87                       92  true                       72  true                     4079 false
+   88                      153  true                       60  true                     5314 false
+   89                      127  true                       65  true                     5053 false
+   90                       79  true                     1289  true                     5275 false
+   91                      213  true                      161  true                     6142 false
+   92                     2158  true                      261  true                     1413 false
+   93                       91  true                      393  true                     5004 false
+   94                      162  true                      131  true                      574 false
+   95                      359  true                      409  true                     1627 false
+   96                     1207  true                     1015  true                        2 false
+   97                       84  true                      175  true                     2053 false
+   98                      166  true                      171  true                      676 false
+   99                       59  true                      136  true                     5140 false
+  100                      722  true                      166  true                     2598 false
+Taux de succes            0.98                           0.99                           0.00
+ 
+Comparaison de meilleur solution:
+   Profondeur d'abord: 54 fois le meilleur
+   Meilleur d'bord:    44 fois le meilleur
+   Hill Climbing:      0 fois le meilleur
+
+
+RESOLUTION DE SUDOKUS 
+============================================================
+Limite de recherche:  10000
+ nJeu               Profondeur d'abord               Meilleur d'abord                   HillClimbing 
+    1                      172  true                      154  true                    10395 false
+    2                       97  true                       80  true                      869 false
+    3                      365  true                      104  true                        1 false
+    4                       68  true                       83  true                     9799 false
+    5                       88  true                       81  true                     3076 false
+    6                       84  true                       89  true                    10772 false
+    7                      103  true                      951  true                     5849 false
+    8                       57  true                       71  true                        7 false
+    9                      208  true                      476  true                      292 false
+   10                      214  true                     1876  true                    10292 false
+   11                       59  true                       74  true                    10493 false
+   12                      937  true                      165  true                    10100 false
+   13                      195  true                      140  true                     7458 false
+   14                      112  true                      637  true                    10136 false
+   15                     6519  true                     1067  true                     5629 false
+   16                      154  true                      165  true                     4086 false
+   17                       93  true                       61  true                     9138 false
+   18                      227  true                      230  true                     4142 false
+   19                      574  true                      706  true                        1 false
+   20                      810  true                      644  true                     2612 false
+   21                       78  true                       90  true                     4823 false
+   22                       82  true                      140  true                        1 false
+   23                      224  true                      312  true                     7723 false
+   24                      230  true                      565  true                      940 false
+   25                       70  true                      169  true                    10808 false
+   26                      684  true                      432  true                     4153 false
+   27                      261  true                      115  true                     6922 false
+   28                       71  true                      125  true                      779 false
+   29                      133  true                      538  true                     2985 false
+   30                       80  true                       94  true                    10688 false
+   31                      141  true                      488  true                        1 false
+   32                      429  true                      134  true                     1459 false
+   33                      455  true                      171  true                     1466 false
+   34                      241  true                      259  true                     6266 false
+   35                      405  true                      167  true                     3348 false
+   36                       80  true                      163  true                        1 false
+   37                      216  true                      182  true                    10397 false
+   38                      317  true                     1485  true                     9439 false
+   39                      374  true                      325  true                     6199 false
+   40                      140  true                       82  true                     8745 false
+   41                      126  true                      121  true                     8237 false
+   42                     2537  true                      635  true                     9267 false
+   43                     1030  true                      931  true                     6610 false
+   44                      324  true                      150  true                     9132 false
+   45                      112  true                      242  true                     2562 false
+   46                      379  true                      205  true                     9933 false
+   47                      483  true                      496  true                    10173 false
+   48                      627  true                      182  true                    10248 false
+   49                      102  true                      150  true                     3315 false
+   50                       95  true                      305  true                     3354 false
+   51                     5798  true                     6809  true                     3384 false
+   52                       76  true                       88  true                     7807 false
+   53                      375  true                      466  true                     5844 false
+   54                       79  true                       83  true                     2024 false
+   55                     1333  true                     1068  true                        3 false
+   56                       69  true                       84  true                        5 false
+   57                       57  true                      303  true                     8628 false
+   58                      577  true                      330  true                     8577 false
+   59                      325  true                      945  true                        1 false
+   60                     2488  true                     1861  true                      888 false
+   61                      204  true                      145  true                    10216 false
+   62                      880  true                       58  true                     9960 false
+   63                       68  true                      351  true                        3 false
+   64                      132  true                      106  true                     9094 false
+   65                      277  true                     1040  true                    10159 false
+   66                       85  true                      108  true                        2 false
+   67                      243  true                       73  true                     5194 false
+   68                       99  true                      110  true                     2559 false
+   69                       55  true                      268  true                        2 false
+   70                       73  true                       73  true                     2127 false
+   71                      145  true                      599  true                    10359 false
+   72                      270  true                      608  true                     6360 false
+   73                      170  true                      284  true                     2465 false
+   74                       65  true                      105  true                     3590 false
+   75                      379  true                      217  true                     8597 false
+   76                       85  true                     1663  true                        5 false
+   77                      330  true                      116  true                        2 false
+   78                      150  true                       90  true                        1 false
+   79                      428  true                       73  true                     2583 false
+   80                     1127  true                     2236  true                     1778 false
+   81                      805  true                     4995  true                     9130 false
+   82                      458  true                      612  true                    10083 false
+   83                       57  true                       60  true                     4603 false
+   84                      217  true                      383  true                        1 false
+   85                       86  true                       73  true                    10280 false
+   86                     1149  true                      583  true                     8588 false
+   87                       92  true                       72  true                    10906 false
+   88                      153  true                       60  true                     3539 false
+   89                      127  true                       65  true                     7409 false
+   90                       79  true                     1289  true                     3463 false
+   91                      213  true                      161  true                     4109 false
+   92                     2158  true                      261  true                        1 false
+   93                       91  true                      393  true                     6355 false
+   94                      162  true                      131  true                     6613 false
+   95                      359  true                      409  true                     5791 false
+   96                     1207  true                     1015  true                    10120 false
+   97                       84  true                      175  true                     2886 false
+   98                      166  true                      171  true                     1704 false
+   99                       59  true                      136  true                     4501 false
+  100                      722  true                      166  true                     5279 false
+Taux de succes            1.00                           1.00                           0.00
+ 
+Comparaison de meilleur solution:
+   Profondeur d'abord: 55 fois le meilleur
+   Meilleur d'bord:    44 fois le meilleur
+   Hill Climbing:      0 fois le meilleur

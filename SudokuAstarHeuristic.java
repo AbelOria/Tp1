@@ -5,6 +5,10 @@ import java.util.Set;
 
 import aima.core.search.framework.HeuristicFunction;
 
+/*
+ * @author Abel Oria, Zakaria Soliman
+ */
+
 public class SudokuAstarHeuristic implements HeuristicFunction {
 
 	

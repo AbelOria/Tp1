@@ -8,7 +8,9 @@ import aima.core.agent.Action;
 import aima.core.agent.impl.DynamicAction;
 import aima.core.search.framework.ActionsFunction;
 import aima.core.search.framework.ResultFunction;
-
+/**
+ *  @author Abel Oria, Zakaria Soliman
+ */
 public class SudokuHCFunctionFactory {
 
 	private static ActionsFunction _actionsFunction = null;
@@ -36,7 +38,7 @@ public class SudokuHCFunctionFactory {
 
 	/**
 	 * 
-	 * @author Abel Oria
+	 * @author Abel Oria ,Zakaria Soliman
 	 * Permet la creations des actions pour une etat donné du sudoku en 
 	 * utilisant la premier case avec le plus petit nombre de actions 
 	 * possibles
@@ -206,7 +208,7 @@ public class SudokuHCFunctionFactory {
 
 	/**
 	 * 
-	 * @author Abel Oria
+	 * @author Abel Oria, Zakaria Soliman
 	 * Génère des nouvelles instances du sudoku  
 	 * 
 	 */

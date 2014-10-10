@@ -16,7 +16,7 @@ import aima.core.search.uninformed.DepthFirstSearch;
 
 /**
  * 
- * @author abel Oria
+ * @author abel Oria,Zakaria Soliman
  * Agent de recherche pour les problèmes de sudoku
  * 
  */
@@ -221,25 +221,13 @@ public class SudokuApp{
 	//Evaluation SudokuApp	
 	//========================================================
 	public static void main(String[] args) {
+		//args[0]:  Type de recherche ( 0 | 1 | 2 )
+		//args[1]:  Exemplare de sudoku (81 caractères de 0 à 9)
+		//args[2]:  Nombre maximum de noeuds à explorer 
 
-
-		String sudoku1 = "800006304000000000040090001"
-				+ 	"309060000000700006021800050"
-				+ 	"002470000400008700000001040";
-
-		String sudoku2 = "002519436596342871314867290"
-				+	"001738649937654128648921750"
-				+	"000483967873296510469175380";
-
-		String sudoku3 = "782519436596342871314867295"
-				+	"251738649937654128648921753"
-				+	"125483967873296514469175382";
-
-		String sudoku4 = "000009430000000000314867000"
-				+	"000008640000000000048901703"
-				+	"025483960000090514469175302";
-
-		SudokuApp sudokuApp = new SudokuApp(0,sudoku2 , 500);
+		SudokuApp sudokuApp = new SudokuApp(Integer.parseInt(args[0]), 
+				args[1], 
+				Integer.parseInt(args[2]));
 
 		List<Action> actions = sudokuApp.getActions();
 
