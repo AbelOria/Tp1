@@ -65,7 +65,6 @@ public class SudokuApp{
 		}
 		agent = createAgent(kindSearch);
 		actions  = agent.getActions();		
-		System.out.println(hc.getNodesExpanded() + "ff");
 	}	
 
 
@@ -103,7 +102,8 @@ public class SudokuApp{
 			return gs2.getNoeudsExplores();
 		}
 		else if(typeRecherche == 2){
-			return hc.getNoeudsExplores();
+//			return hc.getNoeudsExplores();
+			return hc.getNodesExpanded();
 		}
 		return 0;
 	}
