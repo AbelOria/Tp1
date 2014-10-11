@@ -57,7 +57,7 @@ public class SudokuApp{
 
 		sudoku = new Sudoku(etatInitial);
 		if(kindSearch == 2){
-			sudoku.remplirAleatoirementHillClimbing();
+			sudoku.remplirAleatoirementHillClimbing3x3();
 			problem = createProblemHillClimbing(sudoku);
 		}
 		else{
@@ -65,6 +65,7 @@ public class SudokuApp{
 		}
 		agent = createAgent(kindSearch);
 		actions  = agent.getActions();		
+		System.out.println(hc.getNodesExpanded() + "ff");
 	}	
 
 

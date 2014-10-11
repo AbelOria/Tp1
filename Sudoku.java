@@ -132,6 +132,49 @@ public class Sudoku {
 		}	
 	}
 
+	
+	/**
+	 * Remplisage aleatoire des cases 0 d'une grille sudoku (etat),
+	 * utilisé pour génèrer un état initial pour la recherche
+	 * Hill Climbing. Remplisage de 0 à 9 dessus grilles 3x3 
+	 */
+	public void remplirAleatoirementHillClimbing3x3(){
+
+		int g = 0;
+		while(g < 7){
+			int k = 0;
+			while( k < 7){
+				//Generation de nombres a remplir de  1 à 9
+				LinkedList<Integer> nombresARemplir = new LinkedList <Integer>();
+				for(int j = 0 ; j < 9 ; j++){
+					nombresARemplir.add(j+1);
+				}
+				
+				//Elimination de nombres deja presentes dans la grille 3x3
+				for(int m = 0 ; m <  3 ; m++){
+					for(int n = 0  ; n <  3 ; n++ ){
+						if(etat[g+m][k+n] != 0 ){
+							Integer x = etat[g+m][k+n];
+							nombresARemplir.remove(x);
+						}					
+					}							
+				}
+				
+				// Remplisage de la grille de façon aleatoire 
+				for(int m = 0 ; m <  3 ; m++){
+					for(int n = 0  ; n <  3 ; n++ ){
+						if(etat[g+m][k+n] == 0 ){
+							int random = (int)(Math.random()*nombresARemplir.size());
+							etat[g+m][k+n] = nombresARemplir.remove(random);
+						}					
+					}							
+				}
+				k += 3; 
+			}g += 3; 
+			
+		}		
+	}
+
 
 	/**
 	 * 
@@ -205,7 +248,7 @@ public class Sudoku {
 				+ 	"000000040090000000480000710"
 				+ 	"900078000000050002020600501");
 		sudoku.print();
-		sudoku.remplirAleatoirementHillClimbing();
+		sudoku.remplirAleatoirementHillClimbing3x3();
 		System.out.println("");
 		sudoku.print();
 	}
